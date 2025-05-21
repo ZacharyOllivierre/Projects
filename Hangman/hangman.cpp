@@ -140,10 +140,8 @@ class Man {
                 cout << "\n";
             }
 
-            message = "The word was ";
+            message = "The word was " + codeWord;
             printCentered(message);
-            cout << "\n";
-            printWordState();
             cout << "\n";
         }
 
@@ -276,7 +274,7 @@ class Man {
 
         void playRound() {
             beginMessage();
-            cout << "Codeword " << codeWord << endl;
+            // cout << "Codeword " << codeWord << endl;
 
             while (!won && lives > 0) {
                 printManState();
