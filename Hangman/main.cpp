@@ -1,18 +1,21 @@
-#include "hangman.h"
+#include "hangman.hpp"
+#include "game.hpp"
 
 int main() {
     int wordCount = 0;
     string* wordList = readFromFile(wordCount);
     bool playing = true;
-    Man man1;
+    Game game1;
 
+    // Game loop
     while(playing) {
-        man1.resetGame(wordList, wordCount);
-        man1.playRound();
+        game1.resetGame(wordList, wordCount);
+        game1.playRound();
 
         playing = playAgain();
     }
 
+    // Free memory
     delete [] wordList;
     return 0;
 }

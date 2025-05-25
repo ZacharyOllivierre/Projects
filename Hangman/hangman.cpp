@@ -1,7 +1,7 @@
-#include "hangman.h"
+#include "hangman.hpp"
 using namespace std;
 
-// File words into string, returns pointer / wordCount by reference
+// Returns pointer to array of strings (word list) | Returns wordCount of file through reference
 string* readFromFile(int& wordCount) {
     wordCount = 0;
     string temp;
@@ -36,12 +36,14 @@ string* readFromFile(int& wordCount) {
     return wordList;
 }
 
+// Prints Lines 
 void printLines(int num) {
     for (int x = 0; x < num; x++) {
         cout << "-";
     }
 }
 
+// Prompts user for playing again (T/F)
 bool playAgain() {
     char input;
     
@@ -64,6 +66,7 @@ bool playAgain() {
     return false;
 }
 
+// Prints single layer text centered | Width: Width of Field | Extra: Extra taken up space
 void printCentered(const string& text, int extra, int width) {
     int padding = (width - text.length() - extra) / 2;
 
@@ -72,6 +75,7 @@ void printCentered(const string& text, int extra, int width) {
     cout << setw(padding + text.length()) << text;
 }
 
+// Prints multi layer text centered | Width: Width of Field
 void printCenteredMultiline(const string& text, int width) {
     string line = "";
     
