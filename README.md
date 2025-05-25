@@ -4,4 +4,4 @@
     
 ## OneShots - Easy Practice Problems
 
-## SeachSor - Searching and Sorting algorithms
+## SeachSort - Searching and Sorting algorithms
