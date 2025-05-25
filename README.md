@@ -1,10 +1,7 @@
-Hangman
-    Complete Ascii Hangman Build
+## Hangman - Ascii Hangman Build
     To compile:
     g++ main.cpp hangman.cpp game.cpp
     
-OneShots   
-    Quick easy problems
+## OneShots - Easy Practice Problems
 
-SeachSor       
-    Searching and sorting algorithms
+## SeachSor - Searching and Sorting algorithms
