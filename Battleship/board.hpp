@@ -7,9 +7,9 @@ private:
     const int SPACING = 1;
     const int BOXWIDTH = 5;
     const int BOXHEIGHT = 3;
-    const int MARGINSIZE = 2;
+    const int MEDIANSIZE = 2;
+    const int MEDIANSPACE = 2;
 
-    int player;
     int board[static_cast<int>(BOARDSIZE)][static_cast<int>(BOARDSIZE)];
     // 0 = Empty | 1 = Ship | 2 = Hit | 3 = Miss
     
@@ -22,7 +22,9 @@ public:
     
     void displayBoard(int type);
     std::string displayCenter(int type, int x, int y);
+    void displayMedian();
     void acceptShip(int* cordNum, int size);
+    void removeShip(int* cordNum, int size);
     void acceptAttack(int row, int col);
 };
 

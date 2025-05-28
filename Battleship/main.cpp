@@ -7,6 +7,8 @@ int main() {
     cout << "\033[2J";
 
     Board board1(1);
+    Board board2(2);
+
     int array[3];
     array[0] = cordToIndex("D5");
     array[1] = cordToIndex("E5");
@@ -15,10 +17,11 @@ int main() {
     int* ptr = array;
 
     board1.acceptShip(ptr, 3);
-    board1.acceptAttack(1, 1);
-    board1.acceptAttack(0, 0);
+    board2.acceptShip(ptr, 3);
 
     board1.displayBoard(2);
+    board1.displayMedian();
+    board2.displayBoard(2);
 
     return 0;
 }

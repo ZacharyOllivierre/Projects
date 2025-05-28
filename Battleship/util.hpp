@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 
 int cordToIndex(std::string coordinate);
