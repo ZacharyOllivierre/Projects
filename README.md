@@ -4,7 +4,7 @@
 
 ## Battleship
     To compile:
-    g++ main.cpp board.cpp util.cpp
+    g++ main.cpp board.cpp ship.cpp util.cpp
     
 ## OneShots - Easy Practice Problems
 

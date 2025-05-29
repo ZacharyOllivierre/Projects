@@ -10,7 +10,7 @@ Board::Board(int playerID) {
     for (int y = 0; y < BOARDSIZE; y++) {
         
         for (int x = 0; x < BOARDSIZE; x++) {
-            board[y][x] = 0;
+            board[y][x] = cellState::Empty;
         }
     }
 
@@ -40,10 +40,10 @@ string Board::displayCenter(int type, int x, int y) {
             return "x";
         
         case 2:
-            return to_string(board[y][x]);
+            return to_string(static_cast<int>(board[y][x]));
 
         default:
-            cout << "ERROR | DISPLAYCENTER";
+            cerr << "ERROR | DISPLAYCENTER";
             return " ";
     }
 }
@@ -62,7 +62,7 @@ void Board::acceptShip(int* cordNum, int size) {
     for (int x = 0; x < size; x++) {
         indexToRowCol(cordNum[x], row, col);
 
-        board[row][col] = 1;
+        board[row][col] = cellState::Ship;
     }
 }
 
@@ -72,26 +72,36 @@ void Board::removeShip(int* cordNum, int size) {
     for(int x = 0; x < size; x++) {
         indexToRowCol(cordNum[x], row, col);
 
-        board[row][col] = 0;
+        board[row][col] = cellState::Empty;
     }
 }
 
 void Board::acceptAttack(int row, int col) {
     if (attackHit(row, col)) {
-        board[row][col] = 2;
+        board[row][col] = cellState::Hit;
 
     }
     else {
-        board[row][col] = 3;
+        board[row][col] = cellState::Miss;
     }
 
 }
 
-bool Board:: attackHit(int row, int col) {
-    if (board[row][col] == 1) {
+bool Board::attackHit(int row, int col) {
+    if (board[row][col] == cellState::Ship) {
         return true;
 
     } else {
         return false;
+    }
+}
+
+void Board::reset() {
+    // Fill standing board with empties
+    for (int y = 0; y < BOARDSIZE; y++) {
+        
+        for (int x = 0; x < BOARDSIZE; x++) {
+            board[y][x] = cellState::Empty;
+        }
     }
 }
