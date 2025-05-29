@@ -18,3 +18,4 @@ void indexToRowCol(int index, int& row, int& col) {
     row = index / 10;
     col = index % 10;
 }
+
