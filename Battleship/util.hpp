@@ -9,3 +9,5 @@ int cordToIndex(std::string coordinate);
 
 void indexToRowCol(int cordNum, int& row, int& col);
 
+void printBox(int startX, int startY, int endX, int endY);
+

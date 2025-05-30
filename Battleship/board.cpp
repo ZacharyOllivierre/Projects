@@ -20,15 +20,48 @@ Board::Board(int playerID) {
     }
 }
 
-void Board::displayBoard(int type) {
-    for (int y = 0; y < BOARDSIZE; y++) {
+// void Board::displayBoard(int type) {
+//     for (int y = 0; y < BOARDSIZE; y++) {
         
-        for (int x = 0; x < BOARDSIZE; x++) {
-            cout << "\033[" + to_string(y * (BOXHEIGHT + SPACING) + 1) + ";" + to_string(x * (BOXWIDTH + SPACING) + 1 + horizontalOffset) + "H" << "+---+";
-            cout << "\033[1B" << "\033[" + to_string(BOXWIDTH) + "D" << "| " << Board::displayCenter(type, x, y) << " |";
-            cout << "\033[1B" << "\033[" + to_string(BOXWIDTH) + "D" << "+---+";
-        }
+//         for (int x = 0; x < BOARDSIZE; x++) {
+//             cout << "\033[" + to_string(y * (BOXHEIGHT + SPACING) + 1) + ";" + to_string(x * (BOXWIDTH + SPACING) + 1 + horizontalOffset) + "H" << "+---+";
+//             cout << "\033[1B" << "\033[" + to_string(BOXWIDTH) + "D" << "| " << Board::displayCenter(type, x, y) << " |";
+//             cout << "\033[1B" << "\033[" + to_string(BOXWIDTH) + "D" << "+---+";
+//         }
+//     }
+// }
+
+void Board::displayBoard(int type) {
+
+    int playerBoardXLength = BOARDSIZE * BOXWIDTH;
+    int playerBoardYLength = BOARDSIZE * BOXHEIGHT;
+    int marginSize = 2;
+    int marginPadding = 1;
+
+    int gameBoardYPadding = 2;
+    int gameBoardXPadding = gameBoardYPadding * 2;
+    int gameBoardStartX = 1;
+    int gameBoardStartY = 1;
+    int gameBoardEndX = gameBoardStartX + (gameBoardXPadding * 2) + (playerBoardXLength * 2) + (marginPadding * 2) + marginSize; 
+    int gameBoardEndY = gameBoardStartY + (gameBoardYPadding * 2) + playerBoardYLength + 2;
+
+    int playerBoardStartX = gameBoardStartX + gameBoardXPadding;
+    int playerBoardStartY = gameBoardStartY + gameBoardYPadding + 1; 
+    int playerBoardEndX = playerBoardStartX + playerBoardXLength;
+    int playerBoardEndY = playerBoardStartY + playerBoardYLength;
+
+    if (horizontalOffset) {
+        playerBoardStartX = playerBoardStartX + playerBoardXLength + (marginPadding * 2) + marginSize;
+        playerBoardEndX = playerBoardEndX + playerBoardXLength + (marginPadding * 2) + marginSize;
     }
+
+    printBox(gameBoardStartX, gameBoardStartY, gameBoardEndX, gameBoardEndY);
+    printBox(playerBoardStartX, playerBoardStartY, playerBoardEndX, playerBoardEndY);
+
+    // for (int z = 0; z < BOARDSIZE; z++) {
+    //     cout << "\033[" << playerBoardStartY - 1 << ";" << playerBoardStartX + z * BOXWIDTH << "H" << "| " << z + 1 << " |";
+    // }
+
 }
 
 string Board::displayCenter(int type, int x, int y) {

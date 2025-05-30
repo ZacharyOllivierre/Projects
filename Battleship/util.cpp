@@ -19,3 +19,25 @@ void indexToRowCol(int index, int& row, int& col) {
     col = index % 10;
 }
 
+// Start top left of box | end bottom right
+void printBox(int startX, int startY, int endX, int endY) {
+    int xLength = endX - startX;
+    int yLength = endY - startY;
+    char line;
+
+    for (int x = 0; x <= xLength; x++ ) {
+        if (x == 0 || x == xLength) {
+            line = '+';
+        }
+        else {
+            line = '-';
+        }
+        std::cout << "\033[" + std::to_string(startY) + ";" + std::to_string(startX + x) + "H" << line;
+        std::cout << "\033[" + std::to_string(endY) + ";" + std::to_string(startX + x) + "H" << line;
+    }
+
+    for (int y = 1; y < yLength; y++ ) {
+        std::cout << "\033[" << (startY + y) << ";" << startX << "H" << "|";
+        std::cout << "\033[" << (startY + y) << ";" << endX << "H" << "|";
+    }
+}
