@@ -9,7 +9,4 @@
 ## Battleship
     To compile:
     g++ main.cpp board.cpp ship.cpp util.cpp
-    
-## OneShots - Easy Practice Problems
 
-## SeachSort - Searching and Sorting algorithms
