@@ -10,7 +10,3 @@
     To compile:
     g++ main.cpp hangman.cpp game.cpp
 
-## Battleship
-    To compile:
-    g++ main.cpp board.cpp ship.cpp util.cpp
-
